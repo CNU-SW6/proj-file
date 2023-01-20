@@ -3,6 +3,7 @@ package cnu.swabeimage.service;
 import cnu.swabeimage.dto.ImageDTO;
 import cnu.swabeimage.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,5 +18,9 @@ public class ImageService {
         } else {
             return "";
         }
+    }
+
+    public Resource getImageFile(String fileName) {
+        return imageRepository.findByFileName(fileName);
     }
 }

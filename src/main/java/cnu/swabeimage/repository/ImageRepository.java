@@ -3,6 +3,8 @@ package cnu.swabeimage.repository;
 import cnu.swabeimage.dto.ImageDTO;
 import cnu.swabeimage.utils.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -29,5 +31,16 @@ public class ImageRepository {
         } catch(IOException e) {
             return false;
         }
+    }
+
+    public Resource findByFileName(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        String storageUrl = "C:\\Users\\user\\Desktop\\storage\\";
+        sb.append(storageUrl);
+        sb.append(fileName);
+        sb.append(".png");
+        log.info(sb.toString());
+        FileSystemResource resource = new FileSystemResource(sb.toString());
+        return resource;
     }
 }
